@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>editor</title>
+    <title>Queries</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,7 +11,7 @@
         #editor, #codeSnippet {
             width: 100%;
             min-height: 200px;
-            border: 1px solid #ccc;
+            border: 1px solid ;
             padding: 10px;
             box-sizing: border-box;
             margin-top: 10px;
@@ -25,7 +25,7 @@
     </style>
 </head>
 <body>
-    <h1>Ask Questions</h1>
+    <h1>Theory</h1>
     <div id="editor" contenteditable="true" oninput="updatePreview()"></div>
     <div id="preview"></div>
     <script>
@@ -40,20 +40,20 @@
             document.getElementById('preview').innerHTML = content;
         }
     </script>
-    <h2>Code Snippet</h2>
+    <h2>Code</h2>
     <div id="codeSnippet" contenteditable="true" oninput="displayCodeSnippet()"></div>
     <script>
-        function displayCodeSnippet() {
-            var codeSnippetContent = getEditorContent('codeSnippet');
-            displayPreview(codeSnippetContent);
+        function displayCode() {
+            var codeSnippetContent = getEditorContent('code');
+            displayPreview(codeContent);
         }
     </script>
-    <h2>Video Embed</h2>
+    <h2>Video</h2>
     <input type="text" id="videoUrl" placeholder="Enter video URL">
-    <button onclick="embedVideo()">Embed Video</button>
+    <button onclick="Video()">Video</button>
     <div id="videoPreview"></div>
     <script>
-        function embedVideo() {
+        function Video() {
             var videoUrl = document.getElementById('videoUrl').value;
             var videoPreview = document.getElementById('videoPreview');
             if (isValidYouTubeUrl(videoUrl)) {
