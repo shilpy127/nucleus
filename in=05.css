@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Plans</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery for AJAX requests -->
+</head>
+<body>
+    <h1>Subscription Plans</h1>
+    <div id="plans">
+        <div class="plan" data-plan="Free">
+            <h2>Free Plan</h2>
+            <p>Can post 1 question a day</p>
+            <button class="subscribe-btn">Subscribe</button>
+        </div>
+        <div class="plan" data-plan="Silver">
+            <h2>Silver Plan</h2>
+            <p>₹100/month - Can post 5 questions a day</p>
+            <button class="subscribe-btn">Subscribe</button>
+        </div>
+        <div class="plan" data-plan="Gold">
+            <h2>Gold Plan</h2>
+            <p>₹1000/month - Can post unlimited questions</p>
+            <button class="subscribe-btn">Subscribe</button>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $(".subscribe-btn").click(function() {
+                var plan = $(this).parent().data("plan");
+                // Call a function to handle subscription
+                subscribe(plan);
+            });
+        });
+
+        function subscribe(plan) {
+            // AJAX request to the backend to handle subscription
+            $.ajax({
+                url: "/subscribe",
+                type: "POST",
+                data: { plan: plan },
+                success: function(response) {
+                    alert(response.message);
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                    alert("An error occurred while subscribing. Please try again later.");
+                }
+            });
+        }
+    </script>
+</body>
+</html>
